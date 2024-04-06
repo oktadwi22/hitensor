@@ -34,7 +34,7 @@ export default function RentPage() {
           <h1 className="text-3xl">More Server Coming</h1>
         </div>
 
-        <div className="grid grid-cols-2 gap-5 w-full mt-10">
+        <div className="grid lg:grid-cols-2 gap-5 w-full mt-10">
           {RentDataItem.map((item, index) => (
             <div key={index} className="border-[1px] border-[#91AEFF] px-3 py-5 rounded-2xl">
               <div className="w-full flex justify-center items-center">

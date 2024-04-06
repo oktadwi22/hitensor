@@ -20,7 +20,7 @@ export default function StakePage() {
 
   return (
     <div className="h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden ">
-      <div className="w-[40%] flex flex-col gap-5 justify-center items-center">
+      <div className=" lg:w-[40%] flex flex-col gap-5 justify-center items-center">
         <div className="border-[2px] border-[#1651f5] rounded-2xl px-5 py-5 w-full bg-gray-800 flex flex-col justify-start items-start gap-2">
           <h1>Your Balance</h1>
           <div>
@@ -42,7 +42,7 @@ export default function StakePage() {
               <h1 className="text-5xl font-semibold font-mono">0.0</h1>
             </div>
             <div className="rounded-2xl border-2 border-[#1651f5] flex justify-center items-center">
-              <h1>Please connect your wallet</h1>
+              <h1 className="lg:text-base text-sm">Please connect your wallet</h1>
             </div>
           </div>
           <div className="w-full mt-7 flex flex-col gap-2">
