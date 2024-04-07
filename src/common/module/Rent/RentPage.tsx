@@ -111,7 +111,7 @@ export default function RentPage() {
                 scale: 0.7,
                 opacity: 0,
               }}
-              className=" ring-1 ring-[#91AEFF] backdrop-blur-sm w-[80%] md:w-[45%] xl:w-[45%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[400px]  bg-neutral-900 fixed z-[999] "
+              className=" ring-1 ring-[#91AEFF] backdrop-blur-sm w-[80%] md:w-[45%] xl:w-[45%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[420px]  bg-neutral-900 fixed z-[999] "
             >
               <div className="w-full justify-center items-center py-2 ">
                 <button
