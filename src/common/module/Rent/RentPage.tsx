@@ -121,13 +121,13 @@ export default function RentPage() {
                   <GrFormClose size={30} />
                 </button>
                 <div className="w-full px-5 flex flex-col gap-4 justify-center items-center">
-                  <h1 className="text-2xl ">
+                  <h1 className="text-2xl text-[#91AEFF] ">
                     Rent server
                   </h1>
-                  <h1 className="text-2xl py-2 ">
+                  <h1 className="text-2xl py-2  font-mono">
                   {data.current[selectedItem].title}
                   </h1>
-                  <h1 className="text-2xl -mb-2 ">
+                  <h1 className="text-2xl text-[#91AEFF] -mb-2 ">
                     Duration
                   </h1>
                   <div className="grid grid-cols-3 gap-10">
@@ -145,7 +145,7 @@ export default function RentPage() {
                     </button>
                   </div>
                   <div className=" flex flex-col items-center mt-2 justify-center ">
-                  <h1 className="text-2xl">
+                  <h1 className="text-2xl text-[#91AEFF]">
                     Total
                   </h1>
                   <h1 className="text-3xl font-mono">
