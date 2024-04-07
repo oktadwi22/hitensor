@@ -24,8 +24,8 @@ export default function RentPage() {
   };
 
   return (
-    <div className="h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden ">
-      <div className={openModal ? 'blur-md' : ''}>
+    <div className={` h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden `}>
+      <div className={openModal ? 'blur-md ' : ''}>
         <div className="w-full z-[9] items-center gap-5 flex justify-center">
           <div className=" w-[12rem] flex  flex-col border-[1px] border-[#9DB0D8] rounded-xl px-2 py-1.5">
             <div className="flex justify-start gap-2 items-center">
@@ -149,7 +149,7 @@ export default function RentPage() {
                     Total
                   </h1>
                   <h1 className="text-3xl font-mono">
-                    0.01 ETH
+                    {data.current[selectedItem].price}ETH
                   </h1>
                   </div>
                   <Button
