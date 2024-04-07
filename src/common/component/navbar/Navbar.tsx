@@ -47,12 +47,7 @@ const Navbar = () => {
         
 
         <div className="flex   w-full items-end justify-end">
-          <Link href="/" className=" flex justify-end">
-            <ButtonConect
-              title="Connect"
-              className="hover:!bg-[#EEEEEE] transition-colors duration-300 overflow-hidden !bg-transparent outline outline-1 outline-[#EEEEEE] !text-[#EEEEEE] w-auto !py-2"
-            />
-          </Link>
+          <ButtonConect/>
         </div>
       </div>
       <div className="flex  pt-5 rounded-2xl relative justify-start gap-5 items-center w-auto ">

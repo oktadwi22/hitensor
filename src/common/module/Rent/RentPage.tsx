@@ -9,7 +9,7 @@ export default function RentPage() {
   return (
     <div className="h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden ">
       <div className="w-full  z-[9] items-center gap-5 flex justify-center">
-        <div className=" w-auto flex  flex-col border-[1px] border-[#9DB0D8] rounded-2xl px-3 py-2">
+        <div className=" w-[12rem] flex  flex-col border-[1px] border-[#9DB0D8] rounded-xl px-2 py-1.5">
           <div className="flex justify-start gap-2 items-center">
             <h1 className="text-[#9DB0D8]">•</h1>
             <Image
@@ -17,14 +17,14 @@ export default function RentPage() {
               alt="Nav Logo"
               width={130}
               height={130}
-              className="w-[120px] h-auto object-cover !px-0"
+              className="w-[90px] h-auto object-cover !px-0"
             />
           </div>
         </div>
-        <div className=" w-auto flex  flex-col border-[1px] border-gray-500 rounded-2xl px-3 py-2">
+        <div className=" w-[12rem] flex  flex-col border-[1px] border-gray-700 rounded-xl px-2 py-1.5">
           <div className="flex justify-start gap-2 items-center">
-            <h1 className="text-gray-500">•</h1>
-            <h1 className="text-gray-500">CLOUD FULL</h1>
+            <h1 className="text-gray-700 ">•</h1>
+            <h1 className="text-gray-700 text-sm">CLOUD FULL</h1>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ export default function RentPage() {
           <h1 className="text-3xl">More Server Coming</h1>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-5 w-full mt-10">
+        <div className="grid md:grid-cols-2 gap-5 w-full mt-10">
           {RentDataItem.map((item, index) => (
             <div key={index} className="border-[1px] border-[#91AEFF] px-3 py-5 rounded-2xl">
               <div className="w-full flex justify-center items-center">

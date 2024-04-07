@@ -1,37 +1,82 @@
 import React from "react";
-import { IoWalletOutline } from "react-icons/io5";
+import Button from "@/common/component/element/Button";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
-interface ButtonViewAllProps {
-  title?: string;
-  className?: string;
-}
+const ButtonConect: React.FC = () => {
 
-const ButtonConect: React.FC<ButtonViewAllProps> = ({
-  title = "",
-  className = "",
-}) => {
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const x = e.pageX - e.currentTarget.offsetLeft;
-    const y = e.pageY - e.currentTarget.offsetTop;
 
-    e.currentTarget.style.setProperty("--x", x + "px");
-    e.currentTarget.style.setProperty("--y", y + "px");
-  };
+  return(
+  <ConnectButton.Custom>
+    {({
+      account,
+      chain,
+      openAccountModal,
+      openChainModal,
+      openConnectModal,
+      authenticationStatus,
+      mounted,
+    }) => {
+      // Note: If your app doesn't use authentication, you
+      // can remove all 'authenticationStatus' checks
+      const ready = mounted && authenticationStatus !== 'loading';
+      const connected =
+        ready &&
+        account &&
+        chain &&
+        (!authenticationStatus ||
+          authenticationStatus === 'authenticated');
 
-  return (
-    <button
-      className={
-        
-        `${className} btn relative group gap-2 inline-flex items-center justify-center px-8 py-3 bg-neutral-900 text-white text-base  tracking-wide rounded-full`
-    }
-      onMouseMove={handleMouseMove}
-    >
-      <IoWalletOutline size={20} className="group-hover:text-black transition-all duration-300" />
-      <span className="z-10 group-hover:text-neutral-900 group-hover:font-bold transition-all duration-300">
-        {title}
-      </span>
-    </button>
+      return (
+        <div
+          {...(!ready && {
+            'aria-hidden': true,
+            'style': {
+              opacity: 0,
+              pointerEvents: 'none',
+              userSelect: 'none',
+            },
+          })}
+        >
+          {(() => {
+            if (!connected) {
+              return (
+                <Button
+                  className="!h-auto !px-1 !rounded-xl !text-lg !font-semibold"
+                  onClick={openConnectModal}
+                  color="default"
+                  HoverColor="bg-neutral-100"
+                  label={"Connect"}
+                  textColor="text-white"
+                />
+              );
+            }
+
+            if (chain.unsupported) {
+              return (
+                <button onClick={openChainModal} type="button">
+                  Wrong network
+                </button>
+              );
+            }
+
+            return (
+              <div style={{ display: 'flex', gap: 12 }}>
+
+                <Button
+                  className="!h-auto !px-1 w-32 !rounded-lg !text-lg !font-semibold"
+                  onClick={openAccountModal}
+                  color="default"
+                  HoverColor="bg-neutral-100"
+                  label={account.displayName}
+                  textColor="text-white"
+                />
+              </div>
+            );
+          })()}
+        </div>
+      );
+    }}
+  </ConnectButton.Custom>
   );
-};
-
-export default ButtonConect;
+}
+  export default ButtonConect;

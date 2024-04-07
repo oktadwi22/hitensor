@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/common/component/element/Button";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
@@ -36,13 +37,67 @@ export default function StakePage() {
         </div>
 
         <div className="border-[2px] border-[#1651f5] rounded-2xl px-5 py-5 w-full bg-gray-800 flex  flex-col justify-start items-start gap-2">
-          <div className="grid grid-cols-2 w-full">
+          <div className="flex justify-between items-center w-full">
             <div className="flex-col flex ">
               <h1>Your HTAO</h1>
-              <h1 className="text-5xl font-semibold font-mono">0.0</h1>
+              <h1 className="text-3xl font-semibold font-mono">0.0</h1>
             </div>
-            <div className="rounded-2xl border-2 border-[#1651f5] flex justify-center items-center">
-              <h1 className="lg:text-base text-sm">Please connect your wallet</h1>
+            <div className="rounded-xl w-52 py-2 border-2 border-[#1651f5] flex text-start items-center px-2">
+              <ConnectButton.Custom>
+                {({
+                  account,
+                  chain,
+                  openChainModal,
+                  authenticationStatus,
+                  mounted,
+                }) => {
+                  // Note: If your app doesn't use authentication, you
+                  // can remove all 'authenticationStatus' checks
+                  const ready = mounted && authenticationStatus !== 'loading';
+                  const connected =
+                    ready &&
+                    account &&
+                    chain &&
+                    (!authenticationStatus ||
+                      authenticationStatus === 'authenticated');
+
+                  return (
+                    <div
+                      {...(!ready && {
+                        'aria-hidden': true,
+                        'style': {
+                          opacity: 0,
+                          pointerEvents: 'none',
+                          userSelect: 'none',
+                        },
+                      })}
+                    >
+                      {(() => {
+                        if (!connected) {
+                          return (
+                            "Please connect your wallet"
+                          );
+                        }
+
+                        if (chain.unsupported) {
+                          return (
+                            <button onClick={openChainModal} type="button">
+                              Wrong network
+                            </button>
+                          );
+                        }
+
+                        return (
+                          <div className="text-lg ">
+                            {account.displayName}
+
+                          </div>
+                        );
+                      })()}
+                    </div>
+                  );
+                }}
+              </ConnectButton.Custom>
             </div>
           </div>
           <div className="w-full mt-7 flex flex-col gap-2">

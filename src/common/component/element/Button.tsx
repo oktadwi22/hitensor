@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 
 export interface ButtonProps {
-    label: string;
+    label: any;
     size?: "small" | "medium" | "large";
     color?: "default" | "primary" | "secondary";
     icon?: ReactNode;
@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
         className={clsx(
         //   getButtonPadding(size),
           className,
-          `text-black bg-[#91AEFF] w-full h-[80px] py-2   rounded-3xl focus:outline-none overflow-hidden flex items-center justify-center relative`
+          `text-black bg-[#91AEFF] w-full h-[60px] py-1  rounded-lg focus:outline-none overflow-hidden flex items-center justify-center relative`
         )}
       >
         <div
@@ -53,7 +53,7 @@ const Button: React.FC<ButtonProps> = ({
           )}
         >
 
-          <h1 className="">{label}</h1>
+          <h1 className="text-[14px]">{label}</h1>
 
         </div>
 
