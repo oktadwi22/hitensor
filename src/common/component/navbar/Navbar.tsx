@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
         
 
-        <div className="flex   w-full items-end justify-end">
+        <div className="flex w-full items-end justify-end">
           <ButtonConect/>
         </div>
       </div>
