@@ -131,15 +131,15 @@ export default function RentPage() {
                     Duration
                   </h1>
                   <div className="grid grid-cols-3 gap-10">
-                    <button className={duration === "1 Month" ? 'text-xl text-[#91AEFF]': 'text-xl'}
+                    <button className={duration === "1 Month" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
                     onClick={() => setDuration("1 Month")}>
                      🔘 1 Month
                     </button>
-                    <button className={duration === "2 Months" ? 'text-xl text-[#91AEFF]': 'text-xl'}
+                    <button className={duration === "2 Months" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
                     onClick={() => setDuration("2 Months")}>
                     🔘 2 Months
                     </button>
-                    <button className={duration === "6 Months" ? 'text-xl text-[#91AEFF]': 'text-xl'}
+                    <button className={duration === "6 Months" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
                     onClick={() => setDuration("6 Months")}>
                     🔘 6 Months
                     </button>
