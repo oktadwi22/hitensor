@@ -64,7 +64,7 @@ const ButtonConect: React.FC = () => {
               <div style={{ display: 'flex', gap: 12 }}>
 
                 <Button
-                  className="!h-auto !px-1 lg:!w-32 !rounded-lg !text-lg !font-semibold"
+                  className="!h-auto !px-1 lg:!w-36 !rounded-lg !text-lg !font-semibold"
                   onClick={openAccountModal}
                   color="default"
                   HoverColor="bg-neutral-100"

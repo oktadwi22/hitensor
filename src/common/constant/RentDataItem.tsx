@@ -11,8 +11,7 @@ export const RentDataItem = [
         os: 'OS SSD - 2 x 256GB SATADOM',
         rack: 'Rack Rails + peripherals',
         optional: 'Optional - DC Persistent Memory 12 * 512GB DIMM',
-        price: '0.01'
-
+        price : '0.3',
     },
     {
         title: 'S5P T2',
@@ -23,6 +22,6 @@ export const RentDataItem = [
         os: 'OS SSD - 2 x 256GB SATADOM',
         rack: 'Rack Rails + peripherals',
         optional: 'Optional - DC Persistent Memory 12 * 512GB DIMM',
-        price: '0.04'
+        price : '0.513',
     },
 ]

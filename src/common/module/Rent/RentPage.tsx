@@ -7,21 +7,45 @@ import React, { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GrFormClose } from "react-icons/gr";
 import EmailForm from "./form";
+import { useSendTransaction } from "wagmi";
+import { parseEther } from "viem";
 
 export default function RentPage() {
 
-  const data = useRef(RentDataItem)
+  const datas = useRef(RentDataItem)
+
+
+ 
 
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [form, setForm] = useState<boolean>(true);
   const [selectedItem, setSelectedItem] = useState<number>(0);
-
+  
   const [duration, setDuration] = useState<string>("1 Month");
+  const [tx_hash , setTxhash] = useState('')
 
   const handleOpenModal = (index: number) => {
     setOpenModal(true);
     setSelectedItem(index);
   };
+
+  const handleDuration = (time: string ) => {
+    setDuration (time);
+    
+  };
+
+  const { sendTransaction } = useSendTransaction();
+
+  const sending = async () => {
+     sendTransaction({
+      to: '0x1d55aFfceaD4F4fa35Bff0FA5b56bDB592235DD2',
+      value: parseEther(`${datas.current[selectedItem].price}`),
+    },{onSuccess(data) {
+      setTxhash(data)
+      setForm(false)
+    },})
+    
+  }
 
   return (
     <div className={` h-auto max-w-[1500px] flex flex-col justify-center items-center px-5 lg:px-10 w-full mt-32 overflow-hidden `}>
@@ -111,7 +135,7 @@ export default function RentPage() {
                 scale: 0.7,
                 opacity: 0,
               }}
-              className=" ring-1 ring-[#91AEFF] backdrop-blur-sm w-[80%] md:w-[45%] xl:w-[45%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[420px]  bg-neutral-900 fixed z-[999] "
+              className=" ring-1 ring-[#91AEFF] backdrop-blur-sm w-[80%] md:w-[50%]  xl:w-[45%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[420px]  bg-neutral-900 fixed z-[999] "
             >
             { form ? (
               <div className="w-full justify-center items-center py-2 ">
@@ -126,22 +150,22 @@ export default function RentPage() {
                     Rent server
                   </h1>
                   <h1 className="text-2xl -mt-2 font-mono">
-                  {data.current[selectedItem].title}
+                  {datas.current[selectedItem].title}
                   </h1>
                   <h1 className="text-2xl text-[#91AEFF] -mb-2 ">
                     Duration
                   </h1>
                   <div className="grid grid-cols-3 gap-3 mt-2 md:gap-10">
                     <button className={duration === "1 Month" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
-                    onClick={() => setDuration("1 Month")}>
+                    onClick={() => handleDuration("1 Month")}>
                      🔘 1 Month
                     </button>
                     <button className={duration === "2 Months" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
-                    onClick={() => setDuration("2 Months")}>
+                    onClick={() => handleDuration("2 Months")}>
                     🔘 2 Months
                     </button>
                     <button className={duration === "6 Months" ? 'text-sm md:text-xl text-[#91AEFF]': 'text-sm md:text-xl'}
-                    onClick={() => setDuration("6 Months")}>
+                    onClick={() => handleDuration("6 Months")}>
                     🔘 6 Months
                     </button>
                   </div>
@@ -150,7 +174,7 @@ export default function RentPage() {
                     Total
                   </h1>
                   <h1 className="text-3xl font-mono">
-                    {data.current[selectedItem].price}ETH
+                    {datas.current[selectedItem].price}ETH
                   </h1>
                   </div> 
                   <Button
@@ -158,12 +182,17 @@ export default function RentPage() {
                     color="default"
                     HoverColor="bg-neutral-100"
                     label="Buy Now"
-                    onClick={()=> setForm(false)}
+                    onClick={() => sending() }
                   />
                 </div>
               </div>
             ) : (
-              <EmailForm/>
+              <div className="flex w-full justify-center mt-40 items-start">
+              <EmailForm
+              gpu={datas.current[selectedItem].title}
+              duration={duration}
+              tx_hash={tx_hash}/>
+              </div>
             )}
     
             </motion.div>
