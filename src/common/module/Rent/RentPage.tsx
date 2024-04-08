@@ -24,10 +24,10 @@ export default function RentPage() {
   };
 
   return (
-    <div className={` h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden `}>
+    <div className={` h-auto max-w-[1500px] flex flex-col justify-center items-center px-5 lg:px-10 w-full mt-32 overflow-hidden `}>
       <div className={openModal ? 'blur-md ' : ''}>
-        <div className="w-full z-[9] items-center gap-5 flex justify-center">
-          <div className=" w-[12rem] flex  flex-col border-[1px] border-[#9DB0D8] rounded-xl px-2 py-1.5">
+        <div className=" w-full z-[9] items-center gap-3 flex-col md:flex-row flex justify-center">
+          <div className="w-[12rem] flex  flex-col border-[1px] border-[#9DB0D8] rounded-xl px-2 py-1.5">
             <div className="flex justify-start gap-2 items-center">
               <h1 className="text-[#9DB0D8]">•</h1>
               <Image
@@ -39,7 +39,7 @@ export default function RentPage() {
               />
             </div>
           </div>
-          <div className=" w-[12rem] flex  flex-col border-[1px] border-gray-700 rounded-xl px-2 py-1.5">
+          <div className="w-[12rem] flex flex-col border-[1px] border-gray-700 rounded-xl px-2 py-1.5">
             <div className="flex justify-start gap-2 items-center">
               <h1 className="text-gray-700 ">•</h1>
               <h1 className="text-gray-700 text-sm">CLOUD FULL</h1>
@@ -47,10 +47,10 @@ export default function RentPage() {
           </div>
         </div>
 
-        <div className="w-full flex justify-center flex-col items-center py-10 "
+        <div className=" px-5 flex justify-center flex-col items-center py-10 "
         >
           <div>
-            <h1 className="text-3xl">More Server Coming</h1>
+            <h1 className="text-3xl ">More Server Coming</h1>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5 w-full mt-10">
@@ -62,7 +62,7 @@ export default function RentPage() {
 
                 {/* Spesifikasi */}
 
-                <div className="w-full flex flex-col justify-start items-start px-5 mt-5">
+                <div className="w-full text-[12px] sm:text-lg flex flex-col justify-start items-start px-1 mr-10 mt-10">
                   <h1>{item.cpu}</h1>
 
                   <h1>{item.ram}</h1>
@@ -92,7 +92,7 @@ export default function RentPage() {
         </div>
 
       </div>
-     
+     <div>
         <AnimatePresence >
           {openModal && (
             <motion.div
@@ -124,7 +124,7 @@ export default function RentPage() {
                   <h1 className="text-2xl text-[#91AEFF] ">
                     Rent server
                   </h1>
-                  <h1 className="text-2xl py-2  font-mono">
+                  <h1 className="text-2xl -mt-2 font-mono">
                   {data.current[selectedItem].title}
                   </h1>
                   <h1 className="text-2xl text-[#91AEFF] -mb-2 ">
@@ -163,7 +163,7 @@ export default function RentPage() {
             </motion.div>
           )}
         </AnimatePresence>
-
+        </div>
     </div>
   );
 }

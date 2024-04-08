@@ -9,7 +9,7 @@ export default function SellPage() {
   const account = useAccount()
 
   return (
-    <div className="h-auto max-w-[1500px]  flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden ">
+    <div className="h-auto max-w-[1500px] flex flex-col justify-center items-center px-5 lg:px-10  w-full mt-32 overflow-hidden ">
       <div className="lg:w-[43%] flex flex-col justify-center items-center">
         <h1 className="w-full text-xl lg:text-3xl leading-[1.4em] text-center">
           Sell Your Computing Power With Ease With Just 3 Steps And Earn $HTAO +
