@@ -6,17 +6,17 @@ import { RentDataItem } from "@/common/constant/RentDataItem";
 import React, { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GrFormClose } from "react-icons/gr";
+import EmailForm from "./form";
 
 export default function RentPage() {
 
   const data = useRef(RentDataItem)
 
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [form, setForm] = useState<boolean>(true);
   const [selectedItem, setSelectedItem] = useState<number>(0);
 
   const [duration, setDuration] = useState<string>("1 Month");
-
-
 
   const handleOpenModal = (index: number) => {
     setOpenModal(true);
@@ -113,6 +113,7 @@ export default function RentPage() {
               }}
               className=" ring-1 ring-[#91AEFF] backdrop-blur-sm w-[80%] md:w-[45%] xl:w-[45%] left-[10%] 2xl:w-[25%] mx-auto rounded-3xl flex  inset-44  h-[420px]  bg-neutral-900 fixed z-[999] "
             >
+            { form ? (
               <div className="w-full justify-center items-center py-2 ">
                 <button
                   className=" w-auto flex items-end justify-end relative left-[88%] lg:left-[92%]"
@@ -151,15 +152,20 @@ export default function RentPage() {
                   <h1 className="text-3xl font-mono">
                     {data.current[selectedItem].price}ETH
                   </h1>
-                  </div>
+                  </div> 
                   <Button
                     className="!text-5xl !h-15  !mt-4 !font-bold"
                     color="default"
                     HoverColor="bg-neutral-100"
                     label="Buy Now"
+                    onClick={()=> setForm(false)}
                   />
                 </div>
               </div>
+            ) : (
+              <EmailForm/>
+            )}
+    
             </motion.div>
           )}
         </AnimatePresence>
